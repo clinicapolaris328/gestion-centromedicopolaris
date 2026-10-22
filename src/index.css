@@ -1,0 +1,175 @@
+/* ============================================================
+   Sistema de Gestión — Centro Médico Polaris
+   Tokens de marca (espejo de la landing centromedicopolaris)
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* Bootstrap se importa desde main.jsx antes que este archivo,
+   así estas variables y overrides ganan siempre. */
+
+:root {
+  /* --- Paleta institucional Polaris --- */
+  --navy: #1b3a6b; /* azul institucional */
+  --cyan: #2e9be0; /* azul brillante / cyan */
+  --brand: #2567b0; /* azul intermedio (degradés) */
+  --soft: #f4f7fb; /* gris muy claro (fondos) */
+  --ink: #1e2a3a; /* texto principal */
+
+  /* --- Derivados / semántica UI --- */
+  --brand-gradient: linear-gradient(120deg, #1b3a6b 0%, #2567b0 55%, #2e9be0 100%);
+  --muted: #64748b;
+  --line: #e6ecf3;
+  --line-soft: rgba(27, 58, 107, 0.07); /* delimitadores sutiles (grilla del mes) */
+  --bg: #f1f5fa;
+  --surface: #ffffff;
+
+  /* Estados clínicos / turnos */
+  --ok: #16a34a;
+  --ok-bg: #e7f6ec;
+  --warn: #d97706;
+  --warn-bg: #fdf1e0;
+  --danger: #dc2626;
+  --danger-bg: #fbe9e9;
+  --info: var(--cyan);
+  --info-bg: #e6f3fc;
+
+  /* Sombras */
+  --shadow-soft: 0 10px 30px -12px rgba(27, 58, 107, 0.25);
+  --shadow-card: 0 12px 40px -16px rgba(27, 58, 107, 0.18);
+
+  /* Layout */
+  --sidebar-w: 250px;
+  --sidebar-rail: 76px;
+  --topbar-h: 64px;
+  --radius: 14px;
+  --radius-sm: 10px;
+
+  /* Bootstrap primary override */
+  --bs-primary: var(--brand);
+  --bs-primary-rgb: 37, 103, 176;
+  --bs-body-font-family: "Poppins", "Montserrat", system-ui, sans-serif;
+  --bs-body-color: var(--ink);
+}
+
+/* --- Tema oscuro (remapea los tokens semánticos; los acentos de marca
+       y el gradiente del sidebar se mantienen) --- */
+:root[data-theme="oscuro"] {
+  --navy: #cfe0f2;
+  --ink: #e5eaf1;
+  --muted: #94a3b4;
+  --line: #2a3546;
+  --line-soft: rgba(255, 255, 255, 0.06); /* delimitadores sutiles en oscuro */
+  --bg: #0f1620;
+  --surface: #18202c;
+  --soft: #1e2836;
+  --brand: #4f9fe6;
+  --cyan: #46b0f0;
+
+  --info-bg: rgba(46, 155, 224, 0.16);
+  --ok-bg: rgba(22, 163, 74, 0.18);
+  --warn-bg: rgba(217, 119, 6, 0.18);
+  --danger-bg: rgba(220, 38, 38, 0.18);
+
+  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 12px 40px -16px rgba(0, 0, 0, 0.5);
+
+  --bs-primary: var(--brand);
+  --bs-body-color: var(--ink);
+  /* Texto secundario de Bootstrap (.text-muted, .form-text): sin esto quedaba gris
+     oscuro sobre fondo oscuro en todo el sistema. Usa el --muted del tema. */
+  --bs-secondary-color: var(--muted);
+  --bs-secondary-color-rgb: 148, 163, 180;
+
+  color-scheme: dark;
+}
+:root[data-theme="oscuro"] .tone-muted {
+  background: rgba(148, 163, 184, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Montserrat", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+/* --- Overrides de Bootstrap con marca --- */
+.btn-primary {
+  --bs-btn-bg: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--navy);
+  --bs-btn-hover-border-color: var(--navy);
+  --bs-btn-active-bg: var(--navy);
+  --bs-btn-active-border-color: var(--navy);
+  --bs-btn-disabled-bg: var(--brand);
+  --bs-btn-disabled-border-color: var(--brand);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--brand);
+  --bs-btn-border-color: var(--brand);
+  --bs-btn-hover-bg: var(--brand);
+  --bs-btn-hover-border-color: var(--brand);
+  --bs-btn-active-bg: var(--brand);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 0.2rem rgba(46, 155, 224, 0.2);
+}
+
+/* Comentarios / observaciones: el recuadro se adapta al texto. Donde el navegador
+   soporta `field-sizing`, crece y se achica solo según el contenido; en todos lados,
+   además, se puede agrandar o achicar arrastrando el borde inferior. El tope evita
+   que empuje de más (si se pasa, aparece scroll) y el mínimo mantiene un alto cómodo. */
+textarea.form-control {
+  resize: vertical;
+  min-height: 2.6rem;
+  max-height: 60vh;
+  field-sizing: content;
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cdd8e6;
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b3c2d6;
+}

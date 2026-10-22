@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "hono": "npm:hono@4",
+    "hono/cookie": "npm:hono@4/cookie",
+    "hono/cors": "npm:hono@4/cors",
+    "hono/secure-headers": "npm:hono@4/secure-headers",
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2",
+    "zod": "npm:zod@3"
+  }
+}

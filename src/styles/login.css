@@ -1,0 +1,180 @@
+/* ============================================================
+   Login — pantalla de marca, independiente del tema claro/oscuro
+   (usa colores de marca fijos para verse siempre igual)
+   ============================================================ */
+.login {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f1f5fa;
+}
+
+/* Panel izquierdo con identidad Polaris */
+.login__aside {
+  background: linear-gradient(150deg, #1b3a6b 0%, #2567b0 55%, #2e9be0 100%);
+  color: #fff;
+  padding: 56px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login__logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #fff;
+  padding: 8px;
+  object-fit: contain;
+  margin-bottom: 28px;
+}
+.login__aside h2 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 14px;
+  max-width: 12ch;
+  line-height: 1.15;
+}
+.login__aside p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 42ch;
+  margin: 0;
+}
+.login__aside-foot {
+  margin-top: auto;
+  padding-top: 40px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Panel derecho: formulario */
+.login__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+.login__card {
+  width: 100%;
+  max-width: 380px;
+}
+.login__card h1 {
+  color: #1b3a6b;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.login__sub {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+.login__error {
+  background: #fbe9e9;
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+.login__field {
+  display: block;
+  margin-bottom: 16px;
+}
+.login__field > span {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1e2a3a;
+  margin-bottom: 6px;
+}
+.login__input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #e6ecf3;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0 12px;
+  color: #64748b;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.login__input:focus-within {
+  border-color: #2e9be0;
+  box-shadow: 0 0 0 3px rgba(46, 155, 224, 0.18);
+}
+.login__input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 11px 0;
+  font-size: 14px;
+  color: #1e2a3a;
+  font-family: inherit;
+}
+.login__btn {
+  width: 100%;
+  margin-top: 8px;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  background: linear-gradient(120deg, #1b3a6b 0%, #2567b0 55%, #2e9be0 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: filter 0.15s, transform 0.15s;
+}
+.login__btn:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.login__btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.login__spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* Responsive: en mobile toda la pantalla queda ambientada con la marca
+   (gradiente + logo arriba) y el formulario en una tarjeta blanca. */
+@media (max-width: 840px) {
+  .login {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(160deg, #1b3a6b 0%, #2567b0 55%, #2e9be0 100%);
+  }
+  .login__aside {
+    background: transparent;
+    padding: 44px 28px 8px;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-end;
+  }
+  .login__aside p,
+  .login__aside-foot { display: none; } /* compacto en mobile */
+  .login__logo { margin-bottom: 16px; }
+  .login__aside h2 { font-size: 22px; max-width: none; }
+
+  .login__panel {
+    flex: 1;
+    align-items: center;
+    padding: 16px 20px 40px;
+  }
+  .login__card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px 22px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
+  }
+}

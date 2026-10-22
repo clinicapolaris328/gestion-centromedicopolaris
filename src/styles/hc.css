@@ -1,0 +1,95 @@
+/* ============================================================
+   Historia Clínica — formulario estructurado por especialidad
+   ============================================================ */
+
+/* ---- Evolución (C2): gráficos longitudinales ---- */
+.graf-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  height: 100%;
+}
+.graf__head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.graf__titulo { font-weight: 600; font-size: 14px; color: var(--ink); }
+.graf__u { color: var(--muted); font-weight: 400; font-size: 12px; }
+.graf__ult { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--ink); }
+.graf__val { display: inline-flex; align-items: center; gap: 5px; }
+.graf__dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.graf__svg { width: 100%; height: auto; display: block; }
+.graf__banda { fill: #16a34a; opacity: 0.08; }
+.graf__eje { stroke: var(--line); stroke-width: 1; }
+.graf__tick { fill: var(--muted); font-size: 9px; }
+.graf__linea { fill: none; stroke: var(--brand); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.graf__pt { fill: var(--brand); }
+
+.hc-form { margin-top: 4px; }
+.hc-tabs { margin-bottom: 16px; flex-wrap: wrap; }
+
+.hc-sub {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+/* Grilla de checkboxes (síntomas, antecedentes, estudios) */
+.chk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+}
+.chk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  background: var(--surface);
+}
+.chk:hover { border-color: var(--brand); }
+.chk.is-on { border-color: var(--brand); background: var(--info-bg); color: var(--navy); font-weight: 600; }
+.chk input { accent-color: var(--brand); width: 15px; height: 15px; flex: 0 0 auto; }
+
+/* IMC calculado (solo lectura) */
+.hc-imc {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 6px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .chk-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* C3 — origen del rango del gráfico (alerta pautada o referencia) */
+.graf__origen { font-size: 11.5px; color: var(--muted); margin: -2px 0 4px; }
+.graf__msg { color: var(--danger); font-weight: 600; }
+
+/* C3 — Dashboard médico (encabezado, bloques por prioridad de especialidad) */
+.dash-head { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 20px; align-items: end;
+  padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--soft); }
+.dash-head__dato { min-width: 0; overflow-wrap: anywhere; }
+.dash-head__acciones { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.dash-bloque { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.dash-bloque:last-child { border-bottom: none; }
+.dash-bloque__t { font-size: 11px; text-transform: uppercase; letter-spacing: .03em; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.dash-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.dash-lista li { overflow-wrap: anywhere; }
+.dash-vitales { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.dash-vital { padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--radius-sm); min-width: 0; }
+.pac-alertas .badge-p { max-width: 100%; }
+@media (max-width: 575px) { .dash-head__acciones { justify-content: flex-start; } }
+.dash-titulo { font-weight: 600; color: var(--navy); margin-right: 4px; }
